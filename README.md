@@ -51,6 +51,18 @@ Execute the CLI tool as a docker container (container name ` whereisrysmind/iplo
 
 ```bash
 docker run whereisrysmind/iploc:latest 8.8.8.8
+
+> 40.5369987487793 -82.12859344482422
 ```
 
+The response will return the values directly to the terminal standard out in the form of 'latitude longintude', separated only by a space. This is so the utility can be executed from the context of a unit env, and the result easily piped to another tool.
+
 > Note:  One drawback of this method includes the API key being available to hackers who may know how to break into containerized processes.
+
+## Code Structure
+
+settings.py - Sets up env variables, and specifies required values with Pydantic.
+main.py - Defines CLI Tool Entrypoints using Click.
+src/schemas.py - Define data structures used by the tool with Pydantic.
+src/ipstack.py - Define IPStack Client class
+tests/ - Contains unit and functional tests.
