@@ -24,8 +24,8 @@ make unittest
 
 Required valued include:
 
-* `IPSTACK_API_HOST`
-* `IPSTACK_API_KEY`
+* `IPSTACK_API_HOST` 
+* `IPSTACK_API_KEY` - Populate this with your *own* API Key
 
 **See [Example Env File](.env.example)**
 
@@ -57,12 +57,14 @@ docker run whereisrysmind/iploc:latest 8.8.8.8
 
 The response will return the values directly to the terminal standard out in the form of 'latitude longintude', separated only by a space. This is so the utility can be executed from the context of a unit env, and the result easily piped to another tool.
 
-> Note:  One drawback of this method includes the API key being available to hackers who may know how to break into containerized processes.
+> Note:  One drawback of this method includes the API key being available to hackers who may know how to break into containerized processes. This may also be extracted by an attacker who can sniff the network traffic at any point in transit as the free-tier API key only supports `http` protocol.
 
 ## Code Structure
 
-settings.py - Sets up env variables, and specifies required values with Pydantic.
-main.py - Defines CLI Tool Entrypoints using Click.
-src/schemas.py - Define data structures used by the tool with Pydantic.
-src/ipstack.py - Define IPStack Client class
-tests/ - Contains unit and functional tests.
+```
+- settings.py - Sets up env variables, and specifies required values with Pydantic.
+- main.py - Defines CLI Tool Entrypoints using Click.
+- src/schemas.py - Define data structures used by the tool with Pydantic.
+- src/ipstack.py - Define IPStack Client class
+- tests/ - Contains unit and functional tests.
+```
