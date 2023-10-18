@@ -8,7 +8,3 @@ def mock_settings(mocker):
     _settings.ipstack_api_key.get_secret_value.return_value = "super-secret-key"
     
     return _settings
-
-@pytest.fixture
-def mock_response(mocker):
-    _response = ""
